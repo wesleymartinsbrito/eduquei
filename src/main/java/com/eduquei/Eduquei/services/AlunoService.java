@@ -24,4 +24,61 @@ public class AlunoService {
         List<Aluno> alunos = alunoRepository.findAll();
         return alunos;
     }
+
+    @Transactional(readOnly = false)
+    public Aluno insert(Aluno aluno){
+        return alunoRepository.save(aluno);
+    }
+
+    @Transactional(readOnly = false)
+    public void deleteId(Long id){
+        alunoRepository.deleteById(id);
+    }
+
+    @Transactional(readOnly = false)
+    public Aluno update(Long id, Aluno aluno){
+        Aluno obj = alunoRepository.getReferenceById(id);
+        updateAluno(obj, aluno);
+        return alunoRepository.save(obj);
+    }
+
+    private void updateAluno(Aluno obj, Aluno aluno) {
+        obj.setName(aluno.getName());
+        obj.setAge(aluno.getAge());
+        obj.setEmail(aluno.getEmail());
+    }
+
+    @Transactional(readOnly = false)
+    public Aluno updateName(Long id, Aluno aluno){
+        Aluno obj = alunoRepository.getReferenceById(id);
+        updateNameMethod(obj, aluno);
+        return alunoRepository.save(obj);
+    }
+
+    private void updateNameMethod(Aluno obj, Aluno aluno) {
+        obj.setName(aluno.getName());
+    }
+
+    @Transactional(readOnly = false)
+    public Aluno updateAge(Long id, Aluno aluno){
+        Aluno obj = alunoRepository.getReferenceById(id);
+        updateAgeMethod(obj, aluno);
+        return alunoRepository.save(obj);
+    }
+
+    private void updateAgeMethod(Aluno obj, Aluno aluno) {
+        obj.setAge(aluno.getAge());
+    }
+
+    @Transactional(readOnly = false)
+    public Aluno updateEmail (Long id, Aluno aluno) {
+        Aluno obj = alunoRepository.getReferenceById(id);
+        updateEmailMethod(obj, aluno);
+        return alunoRepository.save(obj);
+    }
+
+    private void updateEmailMethod(Aluno obj, Aluno aluno) {
+        obj.setEmail(aluno.getEmail());
+    }
+
 }

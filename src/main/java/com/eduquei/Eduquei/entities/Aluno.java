@@ -13,20 +13,16 @@ public class Aluno {
     private String name;
     private Integer age;
     private String email;
-    private Turma turma;
-    private Escola escola;
 
     public Aluno(){
 
     }
 
-    public Aluno(Long id, String name, Integer age, String email, Turma turma, Escola escola) {
+    public Aluno(Long id, String name, Integer age, String email) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.email = email;
-        this.turma = turma;
-        this.escola = escola;
     }
 
     public Long getId() {
@@ -59,22 +55,6 @@ public class Aluno {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Turma getTurma() {
-        return turma;
-    }
-
-    public void setTurma(Turma turma) {
-        this.turma = turma;
-    }
-
-    public Escola getEscola() {
-        return escola;
-    }
-
-    public void setEscola(Escola escola) {
-        this.escola = escola;
     }
 
     @Override
