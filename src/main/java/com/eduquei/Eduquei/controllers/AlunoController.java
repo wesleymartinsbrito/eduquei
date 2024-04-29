@@ -32,25 +32,25 @@ public class AlunoController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Aluno> update(@PathVariable Long id, @ Aluno aluno){
+    public ResponseEntity<Aluno> update(@PathVariable Long id, @RequestBody Aluno aluno){
         aluno = alunoService.update(id, aluno);
         return ResponseEntity.ok().body(aluno);
     }
 
     @PutMapping(value = "/{id}/name")
-    public ResponseEntity<Aluno> updateName(@PathVariable Long id, Aluno aluno){
+    public ResponseEntity<Aluno> updateName(@PathVariable Long id, @RequestBody Aluno aluno){
         aluno = alunoService.updateName(id, aluno);
         return ResponseEntity.ok().body(aluno);
     }
 
     @PutMapping(value = "/{id}/age")
-    public ResponseEntity<Aluno> updateAge(@PathVariable Long id, Aluno aluno){
+    public ResponseEntity<Aluno> updateAge(@PathVariable Long id, @RequestBody Aluno aluno){
         aluno = alunoService.updateAge(id, aluno);
         return ResponseEntity.ok().body(aluno);
     }
 
     @PutMapping(value = "/{id}/email")
-    public ResponseEntity<Aluno> updateEmail(@PathVariable Long id, Aluno aluno){
+    public ResponseEntity<Aluno> updateEmail(@PathVariable Long id, @RequestBody Aluno aluno){
         aluno = alunoService.updateEmail(id, aluno);
         return ResponseEntity.ok().body(aluno);
     }
