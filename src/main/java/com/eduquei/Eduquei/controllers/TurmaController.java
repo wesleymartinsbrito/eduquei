@@ -6,9 +6,7 @@ import com.eduquei.Eduquei.services.TurmaService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +24,17 @@ public class TurmaController {
     @GetMapping
     public ResponseEntity<List<Turma>> findAll(){
         return ResponseEntity.ok().body(turmaService.findAll());
+    }
+
+    @PostMapping
+    public ResponseEntity<Turma> insert(Turma turma){
+        turmaService.insert(turma);
+        return ResponseEntity.ok().body(turma);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        turmaService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

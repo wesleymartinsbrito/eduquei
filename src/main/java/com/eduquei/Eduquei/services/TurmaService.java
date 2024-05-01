@@ -24,4 +24,15 @@ public class TurmaService {
         List<Turma> turmas = turmaRepository.findAll();
         return turmas;
     }
+
+    @Transactional(readOnly = true)
+    public Turma insert(Turma turma){
+        return turmaRepository.save(turma);
+    }
+
+    @Transactional(readOnly = false)
+    public void delete(Long id){
+        Turma turma = turmaRepository.getReferenceById(id);
+        turmaRepository.delete(turma);
+    }
 }
