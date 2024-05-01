@@ -35,4 +35,15 @@ public class TurmaService {
         Turma turma = turmaRepository.getReferenceById(id);
         turmaRepository.delete(turma);
     }
+
+    @Transactional(readOnly = false)
+    public Turma update(Long id, Turma turma){
+        Turma obj = turmaRepository.getReferenceById(id);
+        updateMethod(turma, obj);
+        return turmaRepository.save(obj);
+    }
+
+    private void updateMethod(Turma turma, Turma obj) {
+        turma.setName(obj.getName());
+    }
 }

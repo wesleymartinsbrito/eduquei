@@ -32,9 +32,15 @@ public class TurmaController {
         return ResponseEntity.ok().body(turma);
     }
 
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Turma> update(Long id, Turma turma){
+        Turma result = turmaService.update(id, turma);
+        return ResponseEntity.ok().body(result);
+    }
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         turmaService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
 }
