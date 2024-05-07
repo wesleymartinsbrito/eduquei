@@ -4,10 +4,7 @@ import com.eduquei.Eduquei.entities.Escola;
 import com.eduquei.Eduquei.services.EscolaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +23,17 @@ public class EscolaController {
     public ResponseEntity<List<Escola>> findAll(){
         return ResponseEntity.ok().body(escolaService.findAll());
     }
+
+    @PostMapping
+    public ResponseEntity<Escola> insert(@RequestBody Escola entity){
+        return ResponseEntity.ok().body(escolaService.insert(entity));
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        escolaService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
 
 }
