@@ -1,6 +1,7 @@
 package com.eduquei.Eduquei.controllers;
 
 import com.eduquei.Eduquei.entities.Escola;
+import com.eduquei.Eduquei.entities.Turma;
 import com.eduquei.Eduquei.services.EscolaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,5 +36,18 @@ public class EscolaController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Escola> update(@PathVariable Long id, @RequestBody Escola entity){
+        return ResponseEntity.ok().body(escolaService.update(id, entity));
+    }
 
+    @PutMapping(value = "/{id}/name")
+    public ResponseEntity<Escola> updateName(@PathVariable Long id, @RequestBody Escola entity){
+        return ResponseEntity.ok().body(escolaService.updateName(id, entity));
+    }
+
+    @PutMapping(value = "/{id}/endereco")
+    public ResponseEntity<Escola> updateEndereco(@PathVariable Long id, @RequestBody Escola entity){
+        return ResponseEntity.ok().body(escolaService.updateEndereco(id, entity));
+    }
 }
