@@ -1,6 +1,7 @@
 package com.eduquei.Eduquei.services;
 
 import com.eduquei.Eduquei.entities.Aluno;
+import com.eduquei.Eduquei.exceptions.AlunoNotFoundException;
 import com.eduquei.Eduquei.repositories.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class AlunoService {
 
     @Transactional(readOnly = true)
     public Aluno findById(Long id) {
-        return alunoRepository.findById(id).get();
+        return alunoRepository.findById(id).orElseThrow(AlunoNotFoundException::new);
     }
 
     @Transactional(readOnly = true)

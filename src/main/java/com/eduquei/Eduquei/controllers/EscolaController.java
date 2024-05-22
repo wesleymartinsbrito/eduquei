@@ -1,7 +1,6 @@
 package com.eduquei.Eduquei.controllers;
 
 import com.eduquei.Eduquei.entities.Escola;
-import com.eduquei.Eduquei.entities.Turma;
 import com.eduquei.Eduquei.services.EscolaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

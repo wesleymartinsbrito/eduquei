@@ -2,13 +2,18 @@ package com.eduquei.Eduquei.entities;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "tb_escola")
-public class Escola {
+public class Escola implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "escola_id")
     private Long id;
     private String name;
     private String rua;

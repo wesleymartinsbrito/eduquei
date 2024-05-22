@@ -2,17 +2,20 @@ package com.eduquei.Eduquei.entities;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "tb_aluno")
-public class Aluno {
+public class Aluno implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Integer age;
     private String email;
+
 
     public Aluno(){
 
