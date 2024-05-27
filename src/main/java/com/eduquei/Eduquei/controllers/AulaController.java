@@ -14,6 +14,8 @@ public class AulaController {
     @Autowired
     private AulaService aulaService;
 
+
+
     @GetMapping
     public ResponseEntity<List<Aula>> findAll(){
         return ResponseEntity.ok().body(aulaService.findAll());
