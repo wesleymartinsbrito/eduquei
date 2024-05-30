@@ -15,18 +15,26 @@ public class Escola implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "escola_id")
     private Long id;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String rua;
+    @Column(nullable = false)
     private Integer numero;
+    @Column(nullable = false)
     private String bairro;
+    @Column(nullable = false)
     private String cidade;
+    @Column(nullable = false)
     private String estado;
+    @Column(nullable = false)
+    private Long cnpj;
 
     public Escola (){
 
     }
 
-    public Escola(Long id, String name, String rua, Integer numero, String bairro, String cidade, String estado) {
+    public Escola(Long id, String name, String rua, Integer numero, String bairro, String cidade, String estado, Long cnpj) {
         this.id = id;
         this.name = name;
         this.rua = rua;
@@ -34,6 +42,7 @@ public class Escola implements Serializable {
         this.bairro = bairro;
         this.cidade = cidade;
         this.estado = estado;
+        this.cnpj = cnpj;
     }
 
     public Long getId() {
@@ -99,5 +108,13 @@ public class Escola implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public Long getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(Long cnpj) {
+        this.cnpj = cnpj;
     }
 }
