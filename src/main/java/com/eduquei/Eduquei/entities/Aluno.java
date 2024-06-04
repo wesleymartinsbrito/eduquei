@@ -27,9 +27,13 @@ public class Aluno implements Serializable, UserDetails {
     private String password;
     private UserRole role;
 
-
     public Aluno(){
 
+    }
+    public Aluno(String email, String password, UserRole role){
+    this.email = email;
+    this.password = password;
+    this.role = role;
     }
 
     public Aluno(Long id, String name, Integer age, String email) {
