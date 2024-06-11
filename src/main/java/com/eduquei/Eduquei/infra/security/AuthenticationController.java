@@ -2,6 +2,7 @@ package com.eduquei.Eduquei.infra.security;
 
 import com.eduquei.Eduquei.entities.Aluno;
 import com.eduquei.Eduquei.entities.AuthenticationDTO;
+import com.eduquei.Eduquei.entities.LoginResponseDTO;
 import com.eduquei.Eduquei.entities.RegisterDTO;
 import com.eduquei.Eduquei.repositories.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,17 @@ public class AuthenticationController {
     private AuthenticationManager authenticationManager;
 
     @Autowired
+    private TokenService tokenService;
+
+    @Autowired
     private AlunoRepository alunoRepository;
     @PostMapping(value = "/login")
     public ResponseEntity login(@RequestBody AuthenticationDTO data){
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = authenticationManager.authenticate(usernamePassword);
-        return ResponseEntity.ok().build();
+
+        var token = tokenService.generateToken((Aluno) auth.getPrincipal());
+        return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
     @PostMapping(value = "/register")
