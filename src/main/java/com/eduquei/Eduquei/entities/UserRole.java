@@ -2,7 +2,8 @@ package com.eduquei.Eduquei.entities;
 
 public enum UserRole {
     ADMIN("admin"),
-    USER("user");
+    USER("user"),
+    PROFESSIONAL("professional");
 
     private String role;
 

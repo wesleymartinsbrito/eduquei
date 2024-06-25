@@ -3,7 +3,6 @@ package com.eduquei.Eduquei.entities;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
@@ -12,9 +11,8 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tb_aluno")
-public class Aluno implements Serializable, UserDetails {
-    private static final long serialVersionUID = 1L;
+@Table(name = "tb_profissional")
+public class Profissional implements Serializable, UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,24 +24,29 @@ public class Aluno implements Serializable, UserDetails {
     private String password;
     private UserRole role;
 
-    public Aluno(){
+    public Profissional(){
 
     }
-    public Aluno(String email, String password, UserRole role){
-    this.email = email;
-    this.password = password;
-    this.role = role;
+    public Profissional(String email, String password, UserRole role){
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
-
-    public Aluno(Long id, String name, Integer age, String email) {
+    public Profissional(Long id, String name, Integer age, String email, String password, UserRole role) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.email = email;
+        this.password = password;
+        this.role = role;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -74,20 +77,22 @@ public class Aluno implements Serializable, UserDetails {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Aluno aluno = (Aluno) o;
-        return Objects.equals(id, aluno.id) && Objects.equals(name, aluno.name);
+        Profissional that = (Profissional) o;
+        return Objects.equals(id, that.id) && Objects.equals(email, that.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, email);
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.role == UserRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_PROFESSIONAL"), new SimpleGrantedAuthority("ROLE_USER"));
-        else if (this.role == UserRole.PROFESSIONAL) { return List.of(new SimpleGrantedAuthority("ROLE_PROFESSIONAL"), new SimpleGrantedAuthority("ROLE_USER"));
-        } else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        if (this.role == UserRole.ADMIN) {
+            return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_PROFESSIONAL"), new SimpleGrantedAuthority("ROLE_USER"));
+        } else {
+            return List.of(new SimpleGrantedAuthority("ROLE_PROFESSIONAL"));
+        }
     }
 
     @Override
@@ -119,4 +124,10 @@ public class Aluno implements Serializable, UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
 }
