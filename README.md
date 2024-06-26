@@ -12,7 +12,7 @@ A aplicação consiste em uma plataforma de aulas EAD onde é permitido a criaç
 ![Tela de Registro](https://github.com/wesleymartinsbrito/assets/blob/main/Captura%20de%20tela%202024-06-26%20183929.png) ![Tela de Login](https://github.com/wesleymartinsbrito/assets/blob/main/Captura%20de%20tela%202024-06-26%20183844.png)
 
 ## Modelo conceitual
-![Modelo Conceitual](https://github.com/acenelio/assets/raw/main/sds1/modelo-conceitual.png)
+![Modelo Conceitual](https://github.com/wesleymartinsbrito/assets/blob/main/DIAGRAMA%20EDUQUEI.png)
 
 # Tecnologias utilizadas
 ## Back end
