@@ -3,6 +3,9 @@ package com.eduquei.Eduquei.controllers;
 import com.eduquei.Eduquei.entities.Aluno;
 import com.eduquei.Eduquei.entities.Profissional;
 import com.eduquei.Eduquei.services.ProfissionalService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +18,13 @@ public class ProfissionalController {
     @Autowired
     private ProfissionalService profissionalService;
 
+    @Operation(summary = "Realiza a busca de profissionais pelo ID", method = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Profissional encontrado"),
+            @ApiResponse(responseCode = "422", description = "Id incorreto"),
+            @ApiResponse(responseCode = "400", description = "Parametros id inválido"),
+            @ApiResponse(responseCode = "500", description = "Id incorreto"),
+    })
     @GetMapping(value = "/{id}")
     public Profissional findById(@PathVariable Long id){
         return profissionalService.findById(id);
