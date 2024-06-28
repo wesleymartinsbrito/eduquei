@@ -47,7 +47,7 @@ cd backend
 ./mvnw spring-boot:run
 ```
 
-## Front end web
+## Front end web 
 Pré-requisitos: npm / yarn
 
 ```bash
@@ -63,9 +63,3 @@ yarn install
 # executar o projeto
 yarn start
 ```
-
-# Autor
-
-Wellington Mazoni de Andrade
-
-https://www.linkedin.com/in/wmazoni
