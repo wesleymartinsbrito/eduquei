@@ -5,6 +5,7 @@ import com.eduquei.Eduquei.services.AulaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -14,8 +15,6 @@ public class AulaController {
     @Autowired
     private AulaService aulaService;
 
-
-
     @GetMapping
     public ResponseEntity<List<Aula>> findAll(){
         return ResponseEntity.ok().body(aulaService.findAll());
@@ -24,5 +23,10 @@ public class AulaController {
     @PostMapping
     public ResponseEntity<Aula> insert(@RequestBody Aula aula){
         return ResponseEntity.ok().body(aulaService.insert(aula));
+    }
+
+    @PostMapping("/upload")
+    public void upload(@RequestParam MultipartFile aula){
+        aulaService.salvarAula(aula);
     }
 }

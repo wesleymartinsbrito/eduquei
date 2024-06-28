@@ -1,7 +1,9 @@
 package com.eduquei.Eduquei.controllers;
 
 import com.eduquei.Eduquei.entities.Aluno;
+import com.eduquei.Eduquei.entities.Email;
 import com.eduquei.Eduquei.services.AlunoService;
+import com.eduquei.Eduquei.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,9 @@ public class AlunoController {
 
     @Autowired
     private AlunoService alunoService;
+
+    @Autowired
+    private EmailService emailService;
 
     @GetMapping(value = "/{id}")
     public Aluno findById(@PathVariable Long id){
@@ -28,6 +33,8 @@ public class AlunoController {
     @PostMapping
     public ResponseEntity<Aluno> insert(@RequestBody Aluno aluno){
         aluno = alunoService.insert(aluno);
+        Email email = new Email(aluno.getEmail(), "Cadastro realizado!", "Seu cadastro foi realizado, seja bem vindo a EDUQUEI!");
+        emailService.sendEmail(email);
         return ResponseEntity.ok().body(aluno);
     }
 

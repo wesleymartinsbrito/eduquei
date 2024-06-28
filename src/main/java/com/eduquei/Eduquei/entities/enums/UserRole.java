@@ -1,4 +1,4 @@
-package com.eduquei.Eduquei.entities;
+package com.eduquei.Eduquei.entities.enums;
 
 public enum UserRole {
     ADMIN("admin"),

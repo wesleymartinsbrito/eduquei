@@ -1,5 +1,6 @@
 package com.eduquei.Eduquei.entities;
 
+import com.eduquei.Eduquei.entities.enums.UserRole;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,6 +24,9 @@ public class Profissional implements Serializable, UserDetails {
     @Column(nullable = false)
     private String password;
     private UserRole role;
+    @ManyToOne
+    @JoinColumn(name = "escola_id")
+    private Escola escola;
 
     public Profissional(){
 

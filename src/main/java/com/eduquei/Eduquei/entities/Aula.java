@@ -1,5 +1,6 @@
 package com.eduquei.Eduquei.entities;
 
+import com.eduquei.Eduquei.entities.enums.Tema;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -12,15 +13,15 @@ public class Aula implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long temaId;
+    private Tema tema;
 
     @ManyToOne (cascade= CascadeType.ALL)
     @JoinColumn(name = "escola_id")
     private Escola escola;
 
-    public Aula(Long id, Long temaId, Escola escola) {
+    public Aula(Long id, Tema tema, Escola escola, String fileName) {
         this.id = id;
-        this.temaId = temaId;
+        this.tema = tema;
         this.escola = escola;
     }
 
@@ -36,12 +37,12 @@ public class Aula implements Serializable {
         this.id = id;
     }
 
-    public Long getTemaId() {
-        return temaId;
+    public Tema getTema() {
+        return tema;
     }
 
-    public void setTemaId(Long temaId) {
-        this.temaId = temaId;
+    public void setTema(Tema tema) {
+        this.tema = tema;
     }
 
     public Escola getEscola() {

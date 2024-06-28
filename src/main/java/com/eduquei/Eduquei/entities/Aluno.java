@@ -1,9 +1,9 @@
 package com.eduquei.Eduquei.entities;
 
+import com.eduquei.Eduquei.entities.enums.UserRole;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
@@ -25,6 +25,9 @@ public class Aluno implements Serializable, UserDetails {
     @Column(nullable = false)
     private String password;
     private UserRole role;
+    @ManyToOne
+    @JoinColumn(name = "escola_id")
+    private Escola escola;
 
     public Aluno(){
 
@@ -35,11 +38,12 @@ public class Aluno implements Serializable, UserDetails {
     this.role = role;
     }
 
-    public Aluno(Long id, String name, Integer age, String email) {
+    public Aluno(Long id, String name, Integer age, String email, Escola escola) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.email = email;
+        this.escola = escola;
     }
 
     public Long getId() {

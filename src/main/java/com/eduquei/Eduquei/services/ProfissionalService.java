@@ -42,8 +42,8 @@ public class ProfissionalService {
     @Transactional(readOnly = false)
     public Profissional update(Long id, Profissional profissional){
         Profissional obj = profissionalRepository.getReferenceById(id);
-        updateAluno(obj, profissional);
-        return profissional.save(obj);
+        updateProfissional(obj, profissional);
+        return profissionalRepository.save(obj);
     }
 
     private void updateProfissional(Profissional obj, Profissional profissional) {
@@ -54,13 +54,13 @@ public class ProfissionalService {
 
     @Transactional(readOnly = false)
     public Profissional updateName(Long id, Profissional profissional){
-        Profissional obj = profissional.getReferenceById(id);
+        Profissional obj = profissionalRepository.getReferenceById(id);
         updateNameMethod(obj, profissional);
-        return profissional.save(obj);
+        return profissionalRepository.save(obj);
     }
 
     private void updateNameMethod(Profissional obj, Profissional profissional) {
-        obj.setName(profissionalRepository.getName());
+        obj.setName(profissional.getName());
     }
 
     @Transactional(readOnly = false)
