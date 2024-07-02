@@ -1,9 +1,9 @@
 package com.eduquei.Eduquei.infra.security;
 
 import com.eduquei.Eduquei.entities.Aluno;
-import com.eduquei.Eduquei.entities.AuthenticationDTO;
-import com.eduquei.Eduquei.entities.LoginResponseDTO;
-import com.eduquei.Eduquei.entities.RegisterDTO;
+import com.eduquei.Eduquei.entities.dtos.AuthenticationDTO;
+import com.eduquei.Eduquei.entities.dtos.LoginResponseDTO;
+import com.eduquei.Eduquei.entities.dtos.RegisterDTO;
 import com.eduquei.Eduquei.repositories.AlunoRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

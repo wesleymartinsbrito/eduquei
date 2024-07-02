@@ -17,6 +17,7 @@ public class Aluno implements Serializable, UserDetails {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "aluno_id")
     private Long id;
     private String name;
     private Integer age;
@@ -28,6 +29,9 @@ public class Aluno implements Serializable, UserDetails {
     @ManyToOne
     @JoinColumn(name = "escola_id")
     private Escola escola;
+
+    @OneToMany(mappedBy = "aluno")
+    private List<Chamado> chamados;
 
     public Aluno(){
 
@@ -44,6 +48,14 @@ public class Aluno implements Serializable, UserDetails {
         this.age = age;
         this.email = email;
         this.escola = escola;
+    }
+
+    public List<Chamado> getChamados() {
+        return chamados;
+    }
+
+    public void setChamados(Chamado chamados) {
+        this.chamados = (List<Chamado>) chamados;
     }
 
     public Long getId() {

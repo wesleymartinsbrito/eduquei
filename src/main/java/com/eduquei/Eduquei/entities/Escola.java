@@ -30,6 +30,28 @@ public class Escola implements Serializable {
     @Column(nullable = false)
     private Long cnpj;
 
+    @OneToMany(mappedBy = "escola")
+    private List<Aluno> alunos;
+
+    @OneToMany(mappedBy = "escola")
+    private List<Chamado> chamados;
+
+    public List<Chamado> getChamados() {
+        return chamados;
+    }
+
+    public void setChamados(Chamado chamados) {
+        this.chamados = (List<Chamado>) chamados;
+    }
+
+    public Aluno getAlunos() {
+        return (Aluno) alunos;
+    }
+
+    public void setAlunos(Aluno alunos) {
+        this.alunos = (List<Aluno>) alunos;
+    }
+
     public Escola (){
 
     }
