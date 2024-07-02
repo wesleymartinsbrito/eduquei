@@ -65,6 +65,7 @@ public class ChamadoController {
     public ResponseEntity<Chamado> responderChamado(@PathVariable Long id, @RequestBody String resposta){
         Chamado entity = chamadoRepository.getReferenceById(id);
         Email email = new Email(entity.getAluno().getEmail(), "Seu chamado " +entity.getId()+ " foi respondido!", "Boas notícias, seu chamado de numero " +entity.getId()+ " foi respondido, você já pode estar acessando!");
+        emailService.sendEmail(email);
         return ResponseEntity.ok().body(chamadoService.responderChamado(id, resposta));
     }
 }
