@@ -11,6 +11,11 @@ A aplicação consiste em uma plataforma de aulas EAD onde é permitido a criaç
 ## Layout WEB
 ![Tela de Registro](https://github.com/wesleymartinsbrito/assets/blob/main/Captura%20de%20tela%202024-06-26%20183929.png) ![Tela de Login](https://github.com/wesleymartinsbrito/assets/blob/main/Captura%20de%20tela%202024-06-26%20183844.png)
 
+## REQUISIÇÕES
+![Requisição 1](https://github.com/wesleymartinsbrito/assets/blob/main/Captura%20de%20tela%202024-06-28%20160625.png)
+![Requisição 2](https://github.com/wesleymartinsbrito/assets/blob/main/Captura%20de%20tela%202024-06-28%20160650.png)
+![Requisição 3](https://github.com/wesleymartinsbrito/assets/blob/main/Captura%20de%20tela%202024-06-28%20160747.png)
+![Requisição 4](https://github.com/wesleymartinsbrito/assets/blob/main/Captura%20de%20tela%202024-06-28%20160817.png)
 ## Modelo conceitual
 ![Modelo Conceitual](https://github.com/wesleymartinsbrito/assets/blob/main/DIAGRAMA%20EDUQUEI.png)
 
