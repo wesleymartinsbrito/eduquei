@@ -2,6 +2,8 @@ package com.eduquei.Eduquei.entities;
 
 import com.eduquei.Eduquei.entities.enums.UserRole;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,6 +23,7 @@ public class Aluno implements Serializable, UserDetails {
     private Long id;
     private String name;
     private Integer age;
+    @Email(message = "O campo deve conter um e-mail válido.")
     @Column(nullable = false, unique = true)
     private String email;
     @Column(nullable = false)
@@ -42,11 +45,12 @@ public class Aluno implements Serializable, UserDetails {
     this.role = role;
     }
 
-    public Aluno(Long id, String name, Integer age, String email, Escola escola) {
+    public Aluno(Long id, String name, Integer age, String email, String password, Escola escola) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.email = email;
+        this.password = password;
         this.escola = escola;
     }
 
@@ -98,6 +102,7 @@ public class Aluno implements Serializable, UserDetails {
     public int hashCode() {
         return Objects.hash(id, name);
     }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

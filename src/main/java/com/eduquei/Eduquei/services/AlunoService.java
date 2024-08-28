@@ -3,6 +3,7 @@ package com.eduquei.Eduquei.services;
 import com.eduquei.Eduquei.entities.Aluno;
 import com.eduquei.Eduquei.exceptions.AlunoNotFoundException;
 import com.eduquei.Eduquei.exceptions.SameEmailException;
+import com.eduquei.Eduquei.exceptions.ShortPasswordException;
 import com.eduquei.Eduquei.repositories.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,9 +30,10 @@ public class AlunoService {
 
     @Transactional(readOnly = false)
     public Aluno insert(Aluno aluno){
-        if (aluno.getEmail().isEmpty()){
-            throw new SameEmailException();
-        } return alunoRepository.save(aluno);
+        if(aluno.getPassword().length() < 8){
+            throw new ShortPasswordException("Senha menor que 8 dígitos.");
+        } else {
+            return alunoRepository.save(aluno); }
     }
 
     @Transactional(readOnly = false)

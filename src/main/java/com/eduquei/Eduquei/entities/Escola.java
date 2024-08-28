@@ -29,6 +29,16 @@ public class Escola implements Serializable {
     private String estado;
     @Column(nullable = false)
     private Long cnpj;
+    @Column(nullable = false)
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     @OneToMany(mappedBy = "escola")
     private List<Aluno> alunos;
@@ -56,7 +66,7 @@ public class Escola implements Serializable {
 
     }
 
-    public Escola(Long id, String name, String rua, Integer numero, String bairro, String cidade, String estado, Long cnpj) {
+    public Escola(Long id, String name, String rua, Integer numero, String bairro, String cidade, String estado, Long cnpj, String email) {
         this.id = id;
         this.name = name;
         this.rua = rua;
@@ -65,6 +75,7 @@ public class Escola implements Serializable {
         this.cidade = cidade;
         this.estado = estado;
         this.cnpj = cnpj;
+        this.email = email;
     }
 
     public Long getId() {

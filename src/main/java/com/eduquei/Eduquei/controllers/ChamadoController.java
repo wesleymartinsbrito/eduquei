@@ -54,7 +54,9 @@ public class ChamadoController {
     public ResponseEntity<Chamado> insert(@RequestBody Chamado chamado){
 
             Email email = new Email(chamado.getAluno().getEmail(), "Seu chamado foi cadastrado!", "Seu chamado " + chamado.getId() + " foi cadastrado com sucesso!");
+            Email email2 = new Email(chamado.getEscola().getEmail(), "Um novo chamado foi criado!","Um novo chamado foi criado, numero "+ chamado.getId() +", já está disponível para resposta!");
             emailService.sendEmail(email);
+            emailService.sendEmail(email2);
             return ResponseEntity.ok().body(chamadoService.insert(chamado));
     }
 
@@ -64,7 +66,7 @@ public class ChamadoController {
     @PutMapping(value = "/responder/{id}")
     public ResponseEntity<Chamado> responderChamado(@PathVariable Long id, @RequestBody String resposta){
         Chamado entity = chamadoRepository.getReferenceById(id);
-        Email email = new Email(entity.getAluno().getEmail(), "Seu chamado " +entity.getId()+ " foi respondido!", "Boas notícias, seu chamado de numero " +entity.getId()+ " foi respondido, você já pode estar acessando!");
+        Email email = new Email(entity.getAluno().getEmail(), "Seu chamado " +entity.getId()+ " foi respondido!", "Boas notícias, seu chamado de numero " +entity.getId()+ " foi respondido, você já pode estar acessando ou lendo a seguir: " +entity.getResposta());
         emailService.sendEmail(email);
         return ResponseEntity.ok().body(chamadoService.responderChamado(id, resposta));
     }
